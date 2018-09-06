@@ -1,0 +1,37 @@
+{
+  "command":"/home/ops/verdi/ops/update_aoi/update_time.py",
+  "imported_worker_files": {
+    "/home/ops/.netrc": "/home/ops/.netrc",
+    "/home/ops/.aws": "/home/ops/.aws"
+  },
+  "recommended-queues" : [
+    "factotum_job-worker-small",
+    "factotum-job_worker-large",
+    "urgent-response-job_worker-small"
+  ],
+  "disk_usage":"2GB",
+  "soft_time_limit": 1000,
+  "time_limit": 1200,
+  "params" : [
+    {
+      "name": "aoi_name",
+      "destination": "context"
+    },
+    {
+      "name": "aoi_index",
+      "destination": "context"
+    },
+    {
+      "name": "aoi_type",
+      "destination": "context"
+    },
+    {
+      "name": "time_field",
+      "destination": "context"
+    },
+    {
+      "name": "time",
+      "destination": "context"
+    }
+  ]
+}
