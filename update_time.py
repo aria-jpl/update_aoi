@@ -27,7 +27,10 @@ def update_time(index, aoi_type, aoi_name, time_field, time):
     #build the track list by getting the current track and updating the new track num
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, aoi_type, aoi_name)
-    es_query = {"doc" : {time_field: time}}
+    if time_field == 'eventtime':
+        es_query = {"doc" : {"metadata": {time_field : time}}}
+    else:
+        es_query = {"doc" : {time_field: time}}
     print('querying {} with {}'.format(grq_url, es_query))
     response = requests.post(grq_url, data=json.dumps(es_query), timeout=60, verify=False)
     response.raise_for_status()
