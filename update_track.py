@@ -12,7 +12,7 @@ from hysds.celery import app
 def main():
     '''main loop that updates/clears the AOI metadata with track'''
     context = load_context()
-    track_number = context['track']
+    track_number = context['track_number']
     aoi_name = context['aoi_name']
     index = context['aoi_index']
     aoi_type = context['aoi_type']
