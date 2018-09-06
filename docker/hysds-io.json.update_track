@@ -1,0 +1,37 @@
+{
+  "label" : "Update AOI Track",
+  "submission_type": "iteration",
+  "allowed_accounts": [ "ops" ],
+  "action-type":  "both",  
+  "params" : [
+    {
+      "name": "aoi_name",
+      "from": "dataset_jpath:_id",
+      "type": "text"
+    },
+    {
+      "name": "aoi_index",
+      "from": "dataset_jpath:_index",
+      "type": "text"
+    },
+    {
+      "name": "aoi_type",
+      "from": "dataset_jpath:_type",
+      "type": "text"
+    },
+    {
+      "name": "action",
+      "from": "submitter",
+      "type": "enum",
+      "enumerables": ["append","clear"],
+      "default": "append"
+    },
+    {
+      "name": "track_number",
+      "from": "submitter",
+      "type": "number",
+      "optional": true
+    }
+  ]
+}
+
