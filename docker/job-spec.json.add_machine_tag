@@ -1,5 +1,5 @@
 {
-  "recommended_queues": ["systems-jobs-queue"],
+  "recommended_queues": ["system-jobs-queue"],
   "command": "/home/ops/verdi/ops/update_aoi/add_machine_tag.py",
   "imported_worker_files": {
     "/home/ops/.netrc": "/home/ops/.netrc",
