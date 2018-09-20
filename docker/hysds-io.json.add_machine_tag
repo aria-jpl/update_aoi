@@ -5,22 +5,22 @@
   "action-type":  "both",
   "params": [
     {
-      "name": "id",
-      "type": "text",
-      "from": "dataset.jpath:_id"
+      "name": "prod_id",
+      "from": "dataset_jpath:_id",
+      "type": "text"
     },
     {
-      "name": "index",
-      "type": "text",
-      "from": "dataset.jpath:_index"
+      "name": "prod_index",
+      "from": "dataset_jpath:_index",
+      "type": "text"
     },
     {
-      "name": "type",
-      "type": "text",
-      "from": "dataset.jpath:_type"
+      "name": "prod_type",
+      "from": "dataset.jpath:_type",
+      "type": "text"
     },
     {
-      "name": "tag",
+      "name": "add_tag",
       "type": "text",
       "from": "submitter"
     }

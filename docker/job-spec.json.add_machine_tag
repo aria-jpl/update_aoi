@@ -10,19 +10,19 @@
   "disk_usage": "3GB",
   "params": [
     {
-      "name": "id",
+      "name": "prod_id",
       "destination": "context"
     },
     {
-      "name": "index",
+      "name": "prod_index",
       "destination": "context"
     },
     {
-      "name": "type",
+      "name": "prod_type",
       "destination": "context"
     },
     {
-      "name": "tag",
+      "name": "add_tag",
       "destination": "context"
     }
   ]
