@@ -51,12 +51,13 @@ def build_email_report(expiring_aois, days):
     aoi_report = 'Found {0} AOI\'s expiring within the next {1:.1f} days.\n\n'.format(len(expiring_aois), days)
     for aoi in expiring_aois:
         aoi_report += build_aoi_report(aoi)
+    aoi_report += 'current_time: {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'))
     return aoi_report
 
 def email_report(report, email_list):
     '''emails the AOI report list to the emails on the email list'''
-    for email in email_list:
-        send_email(email, 'AOI Expiration Report', report)
+    report_title = 'AOI Expiration Report for {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%d'))
+    send_email(email_list, 'AOI Expiration Report', report)
 
 def send_email(send_to, subject, body):
     '''send email with given inputs'''
@@ -75,11 +76,11 @@ def send_email(send_to, subject, body):
 def build_aoi_report(aoi):
     '''builds the report for a single aoi'''
     name = aoi['_id']
-    starttime_str = aoi['_source']['metadata']['starttime']
-    endtime_str = aoi['_source']['metadata']['endtime']
+    starttime_str = aoi['_source']['starttime']
+    endtime_str = aoi['_source']['endtime']
     endtime = dateutil.parser.parse(endtime_str).replace(tzinfo=pytz.utc)
-    now = datetime.datetime.utcnow()
-    days_until_expire = (endtime - now).days
+    now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+    days_until_expire = (endtime - now).total_seconds() / 86400.0
     report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time: {3}\n\n'.format(name, days_until_expire, endtime_str, starttime_str)
     return report
 
