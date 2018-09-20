@@ -7,9 +7,9 @@ Submits a job to check for expired AOIs & sends out a report via email
 import argparse
 from hysds_commons.job_utils import submit_mozart_job
 
-def main(emails, days, job_version='master', queue='facotutm-job_worker-small', priority=7):
+def main(emails, days, job_version='master', queue='facotutm-job_worker-small', priority=5):
     '''submits the job for AOI checking'''
-    params = {"days": days, "emails": emails}
+    params = [{"name": "days", "from": "value", "value": days},{"name": "emails", "from": "value", "value": emails}]
     job_name = 'check_aoi_expiration:{0}'.format(job_version)
     job_spec = 'job-check_aoi_expiration:{0}'.format(job_version)
     submit_job(job_name, job_spec, params, queue, priority, False)
@@ -19,7 +19,7 @@ def submit_job(job_name, job_spec, params, queue, priority, dedup):
     rule = {
         "rule_name": job_spec,
         "queue": queue,
-        "priority": priority,
+        "priority": int(priority),
         "kwargs":'{}'
     }
     hysdsio = {"id": "internal-temporary-wiring", "params": params, "job-specification": job_spec}
