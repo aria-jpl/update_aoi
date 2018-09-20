@@ -1,0 +1,29 @@
+{
+  "recommended_queues": ["systems-jobs-queue"],
+  "command": "/home/ops/verdi/ops/update_aoi/add_machine_tag.py"
+  "imported_worker_files": {
+    "/home/ops/.netrc": "/home/ops/.netrc",
+    "/home/ops/.aws": "/home/ops/.aws"
+  },
+  "soft_time_limit": 1000,
+  "time_limit": 1200,
+  "disk_usage": "3GB",
+  "params": [
+    {
+      "name": "id",
+      "destination": "context"
+    },
+    {
+      "name": "index",
+      "destination": "context"
+    },
+    {
+      "name": "type",
+      "destination": "context"
+    },
+    {
+      "name": "tag",
+      "destination": "context"
+    }
+  ]
+}

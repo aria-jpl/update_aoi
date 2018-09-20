@@ -1,0 +1,28 @@
+{
+  "label": "Add machine tag",
+  "submission_type": "iteration",
+  "allowed_accounts": [ "ops" ],
+  "action-type":  "both",
+  "params": [
+    {
+      "name": "id",
+      "type": "text",
+      "from": "dataset.jpath:_id"
+    },
+    {
+      "name": "index",
+      "type": "text",
+      "from": "dataset.jpath:_index"
+    },
+    {
+      "name": "type",
+      "type": "text",
+      "from": "dataset.jpath:_type"
+    },
+    {
+      "name": "tag",
+      "type": "text",
+      "from": "submitter"
+    }
+  ]
+}
