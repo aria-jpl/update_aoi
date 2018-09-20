@@ -38,7 +38,7 @@ def main():
 
 def get_expiring_aois(now_time, expire_time):
     '''return the names of AOIs expiring within the given time'''
-    data = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"range":{"endtime":{"gt":"%s","lt":"%s"}}}],"must_not":[],"should":[]}},"from":0,"size":5000,"sort":[],"aggs":{}}' % (now_time, expire_time)
+    data = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"range":{"endtime":{"gt":"%s","lt":"%s"}}}],"must_not":[],"should":[]}},"from":0,"size":5000,"sort":[{"endtime":{"order":"asc"}}],"aggs":{}}' % (now_time, expire_time)
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     grq_url = '{0}/es/_search'.format(grq_ip)
     response = requests.post(grq_url, data=data, timeout=60, verify=False)
