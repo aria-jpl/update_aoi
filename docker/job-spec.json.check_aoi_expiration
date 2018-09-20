@@ -1,0 +1,25 @@
+{
+  "command":"/home/ops/verdi/ops/update_aoi/check_aoi_expiration.py",
+  "imported_worker_files": {
+    "/home/ops/.netrc": "/home/ops/.netrc",
+    "/home/ops/.aws": "/home/ops/.aws"
+  },
+  "recommended-queues" : [
+    "factotum_job-worker-small",
+    "factotum-job_worker-large",
+    "urgent-response-job_worker-small"
+  ],
+  "disk_usage":"2GB",
+  "soft_time_limit": 1000,
+  "time_limit": 1200,
+  "params" : [
+    {
+      "name": "days",
+      "destination": "context"
+    },
+    {
+      "name": "emails",
+      "destination": "context"
+    }
+  ]
+}

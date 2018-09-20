@@ -1,0 +1,21 @@
+{
+  "label" : "Check for AOI Expiration",
+  "submission_type": "individual",
+  "allowed_accounts": [ "ops" ],
+  "action-type":  "both",  
+  "params" : [
+    {
+      "name": "days",
+      "from": "submitter",
+      "type": "text",
+      "placeholder": "expires within"
+    },
+    {
+      "name": "emails",
+      "from": "submitter",
+      "type": "text",
+      "placeholder": "comma separated list"
+    }
+  ]
+}
+
