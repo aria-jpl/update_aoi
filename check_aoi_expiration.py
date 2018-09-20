@@ -34,7 +34,7 @@ def main():
     expire_time = expire.strftime('%Y-%m-%dT%H:%M:%SZ')
     # handle negative ranges
     if now > expire_time:
-    now_time, expire_time = expire_time, now_time
+        now_time, expire_time = expire_time, now_time
     print('checking for AOI\'s expiring before {}'.format(expire_time))
     expiring_aois = get_expiring_aois(now_time, expire_time)
     report = build_email_report(expiring_aois, days)
