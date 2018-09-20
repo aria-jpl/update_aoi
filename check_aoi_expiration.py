@@ -33,7 +33,7 @@ def main():
     expire = (now + datetime.timedelta(days=days))
     expire_time = expire.strftime('%Y-%m-%dT%H:%M:%SZ')
     # handle negative ranges
-    if now > expire_time:
+    if now > expire:
         now_time, expire_time = expire_time, now_time
     print('checking for AOI\'s expiring before {}'.format(expire_time))
     expiring_aois = get_expiring_aois(now_time, expire_time)
