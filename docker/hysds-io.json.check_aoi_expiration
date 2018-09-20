@@ -2,6 +2,7 @@
   "label" : "Check for AOI Expiration",
   "submission_type": "individual",
   "allowed_accounts": [ "ops" ],
+  "enable_dedup": false,
   "action-type":  "both",  
   "params" : [
     {
