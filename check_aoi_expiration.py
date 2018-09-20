@@ -55,6 +55,7 @@ def build_email_report(expiring_aois, days):
     aoi_report += 'Current time: {}\n\n'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'))
     for aoi in expiring_aois:
         aoi_report += build_aoi_report(aoi)
+    aoi_report += 'This is an automated message. If you have any questions, please email aria-help@jpl.nasa.gov'
     return aoi_report
 
 def email_report(report, email_list):
