@@ -16,7 +16,7 @@
     },
     {
       "name": "prod_type",
-      "from": "dataset.jpath:_type",
+      "from": "dataset_jpath:_type",
       "type": "text"
     },
     {
