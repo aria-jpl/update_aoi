@@ -84,7 +84,7 @@ def build_aoi_report(aoi):
     endtime = dateutil.parser.parse(endtime_str).replace(tzinfo=pytz.utc)
     now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
     days_until_expire = float((endtime - now).total_seconds()) / 86400.0
-    query = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"query_string":{"query":"%s","default_operator":"OR"}}]}},"sort":[{"_timestamp":{"order":"desc"}}],"fields":["_timestamp","_source"]}' % name
+    query = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"query_string":{"query":"\\"%s\\"","default_operator":"OR"}}]}},"sort":[{"_timestamp":{"order":"desc"}}],"fields":["_timestamp","_source"]}' % name
     encoded = base64.b64encode(query)
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     url = '{0}/search/?base64={1}'.format(grq_ip, encoded)
