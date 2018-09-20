@@ -61,7 +61,7 @@ def build_email_report(expiring_aois, days):
 def email_report(report, email_list):
     '''emails the AOI report list to the emails on the email list'''
     report_title = 'AOI Expiration Report for {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%d'))
-    send_email(email_list, 'AOI Expiration Report', report)
+    send_email(email_list, report_title, report)
 
 def send_email(send_to, subject, body):
     '''send email with given inputs'''
