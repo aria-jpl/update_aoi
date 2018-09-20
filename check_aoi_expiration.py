@@ -49,9 +49,9 @@ def get_expiring_aois(now_time, expire_time):
 def build_email_report(expiring_aois, days):
     '''builds the email report for all expiring AOIs'''
     aoi_report = 'Found {0} AOI\'s expiring within the next {1:.1f} days.\n\n'.format(len(expiring_aois), days)
+    aoi_report += 'Current time: {}\n\n'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'))
     for aoi in expiring_aois:
         aoi_report += build_aoi_report(aoi)
-    aoi_report += 'current_time: {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'))
     return aoi_report
 
 def email_report(report, email_list):
@@ -80,8 +80,8 @@ def build_aoi_report(aoi):
     endtime_str = aoi['_source']['endtime']
     endtime = dateutil.parser.parse(endtime_str).replace(tzinfo=pytz.utc)
     now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
-    days_until_expire = (endtime - now).total_seconds() / 86400.0
-    report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time: {3}\n\n'.format(name, days_until_expire, endtime_str, starttime_str)
+    days_until_expire = float((endtime - now).total_seconds()) / 86400.0
+    report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time: {3}\n\n'.format(name, days_until_expire, starttime_str, endtime_str)
     return report
 
 def load_context():
