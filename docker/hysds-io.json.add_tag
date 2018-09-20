@@ -1,5 +1,5 @@
 {
-  "label": "Add machine tag",
+  "label": "Add user tag",
   "submission_type": "iteration",
   "allowed_accounts": [ "ops" ],
   "action-type":  "both",
