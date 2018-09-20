@@ -9,13 +9,12 @@ import json
 import datetime
 import pytz
 import smtplib
+import base64
 from email.mime.text import MIMEText
 import requests
 import dateutil.parser
 from hysds.celery import app
 from hysds_commons.net_utils import get_container_host_ip
-
-
 
 def main():
     '''main loop that updates/clears the AOI metadata with the time'''
@@ -85,7 +84,11 @@ def build_aoi_report(aoi):
     endtime = dateutil.parser.parse(endtime_str).replace(tzinfo=pytz.utc)
     now = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
     days_until_expire = float((endtime - now).total_seconds()) / 86400.0
-    report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time: {3}\n\n'.format(name, days_until_expire, starttime_str, endtime_str)
+    query = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"query_string":{"query":"%s","default_operator":"OR"}}]}},"sort":[{"_timestamp":{"order":"desc"}}],"fields":["_timestamp","_source"]}' % name
+    encoded = base64.b64encode(query)
+    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+    url = '{0}/search/?base64={1}'.format(grq_ip, encoded)
+    report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time: {3}\n{4}\n\n'.format(name, days_until_expire, starttime_str, endtime_str, url)
     return report
 
 def load_context():
