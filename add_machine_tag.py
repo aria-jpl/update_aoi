@@ -31,10 +31,10 @@ def add_tag(index, uid, prod_type, tag):
 def main():
     '''loads params from context and updates the machine tag on grq'''
     ctx = load_context()
-    index = ctx['index']
-    uid = ctx['id']
-    tag = ctx['tag']
-    prod_type = ctx['type']
+    index = ctx['prod_index']
+    uid = ctx['prod_id']
+    prod_type = ctx['prod_type']
+    tag = ctx['add_tag']
     add_tag(index, uid, prod_type, tag)
 
 if __name__ == '__main__':
