@@ -89,7 +89,7 @@ def build_aoi_report(aoi):
     encoded = base64.b64encode(query)
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     url = '{0}/search/?base64={1}'.format(grq_ip, encoded)
-    report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time: {3}\n{4}\n\n'.format(name, days_until_expire, starttime_str, endtime_str, url)
+    report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time:   {3}\n{4}\n\n'.format(name, days_until_expire, starttime_str, endtime_str, url)
     return report
 
 def load_context():
