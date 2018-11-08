@@ -3,23 +3,10 @@ FROM hysds/pge-base:latest
 MAINTAINER jlinick "Justin.P.Linick@jpl.nasa.gov"
 LABEL description="PGE for AOI update jobs"
 
-ARG id
-ARG gid
-
-#Change UID and GID from build
 USER root
-RUN set -ex && \
-  usermod -u ${id} ops && \
-  groupmod -g ${gid} ops && \
-  chown -R ops:ops /home/ops/ /data && \
-  usermod -g ${gid} ops
 
 #install shapely
 RUN pip install shapely
-
-#install redis
-#RUN set -ex && \
-#  yum install -y redis
 
 # create work directory
 RUN set -ex \
