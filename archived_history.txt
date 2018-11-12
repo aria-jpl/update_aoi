@@ -1,0 +1,179 @@
+commit c32eb66f40e99ea654c6c6965f0af9ff47575ec0
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Nov 8 10:57:21 2018 -0800
+
+    remove uid & gid
+
+commit adbab2f2d634067b5639edaebbf5a3bbfe1f7e7f
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Fri Sep 21 00:22:06 2018 +0000
+
+    tweak spacing
+
+commit e6b2002b0a3ee08319baa62b69968c592b352a8f
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 20 23:52:41 2018 +0000
+
+    add automated message string
+
+commit ecec41e396c5ecc6589155f05b9ab373b403c042
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 20 23:46:28 2018 +0000
+
+    update job submission params
+
+commit 38521c9688702366cf60e2576b44b51b51f518cb
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 20 23:38:08 2018 +0000
+
+    adding aoi expiration submission for cron
+
+commit c72b1605b43a7e1c8e751fe6627a3df05091380d
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 20 22:50:48 2018 +0000
+
+    disable dedup
+
+commit f220c32176e3c59a89339c8d781a2061f7e4ad4a
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 22:38:14 2018 +0000
+
+    escape backslash chars
+
+commit 5dc0741d7c504a3d348b94e6865ee2daf828a5a6
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 22:30:34 2018 +0000
+
+    include base64 encoded url
+
+commit b82566db4d0bd1af7c41cacdba9390b0f13e6f30
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 22:17:47 2018 +0000
+
+    use proper subject title
+
+commit 1f9bb7c69a70675c803675263afeea1ef6075674
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 22:08:54 2018 +0000
+
+    do dt to dt comparison
+
+commit 8d5d8619c2b1650cbb5a279d64d01b6b94c73e0a
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 22:03:07 2018 +0000
+
+    for condition
+
+commit 1d34dab0715b703d0407471c410db9a040bc107a
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 21:56:54 2018 +0000
+
+    handle negative ranges
+
+commit 08da2f0ef6740f1085915e99f7b3e54e56c65882
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 21:48:06 2018 +0000
+
+    sort by expiration
+
+commit 497ad0265404c1d7bb060211a708f11274ea604b
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 20 21:34:20 2018 +0000
+
+    update times properly
+
+commit e087eecd6648dd193d9f6bddd0f40a6f83497281
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 20 21:22:15 2018 +0000
+
+    update emails to send properly
+
+commit 644542e6665eeaa2f4988fb7189813c2982d7dc0
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 20:52:09 2018 +0000
+
+    add aoi expiration report
+
+commit 306b0bc5402d5140fa0907d7e5a63d4ca82370f2
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:46:55 2018 +0000
+
+    spec name
+
+commit a73e6e3256cecdaa247d4d391c67e9b5f4a4e808
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:46:15 2018 +0000
+
+    add user tags
+
+commit 541f2f9c24d953f31fd636de969357b643f1aef1
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:29:42 2018 +0000
+
+    fix queue
+
+commit 8287f38ec825f16a96689527f54c659dbeeca5db
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:19:32 2018 +0000
+
+    fix docker spec
+
+commit 2250137b1fa26c965d312b086336bfca75bdb736
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:18:42 2018 +0000
+
+    update docker dataset_jpath
+
+commit 3c25706addda35112c9ab7963af2a2fb5bf58131
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:17:14 2018 +0000
+
+    update context parsing
+
+commit e8173435f555e141020bf8531bce7855ae0c6415
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:16:24 2018 +0000
+
+    update docker field types
+
+commit 1c5c0b443aa69456573ac8c81ea77dca3e1d415a
+Author: Gerald Manipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 20 18:02:28 2018 +0000
+
+    adding machine tags
+
+commit 3a5493f5427e8f7881b88d59a9167c8d6a013fbb
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 6 15:11:46 2018 -0700
+
+    update event time to publish in met
+
+commit 68079ccd356536f3878b0036491784f6e9ff21b3
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 6 14:50:27 2018 -0700
+
+    add update start/event/endtime
+
+commit 92a3c96c3e4eadb577321a77bc52ec34f47a9c8f
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 6 14:32:32 2018 -0700
+
+    load track only on append
+
+commit 7cc4214b83059041c8690061b5f9ac927c143df9
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 6 21:21:59 2018 +0000
+
+    update https params
+
+commit 1ecb26e0bd872ed9e296fc75fbd35228a4c929dc
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 6 13:48:21 2018 -0700
+
+    use track_number
+
+commit 5aeee7c74a589af49fabafb15b3f75405b40ef8d
+Author: jlinick <Justin.P.Linick@jpl.nasa.gov>
+Date:   Thu Sep 6 13:26:46 2018 -0700
+
+    add/clear aoi track information
