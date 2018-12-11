@@ -20,6 +20,10 @@
       "type": "text"
     },
     {
+      "name": "current_tags",
+      "from": "dataset_jpath:_source.metadata.tags"
+    },
+    {
       "name": "add_tag",
       "type": "text",
       "from": "submitter"

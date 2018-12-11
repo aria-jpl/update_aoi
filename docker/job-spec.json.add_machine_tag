@@ -22,6 +22,10 @@
       "destination": "context"
     },
     {
+      "name": "current_tags",
+      "destination": "context"
+    },
+    {
       "name": "add_tag",
       "destination": "context"
     }
