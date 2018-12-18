@@ -23,7 +23,7 @@
      "name": "current_tags",
      "from": "dataset_jpath:_source.metadata",
      "lambda": "lambda x: x.get('tags', [])"
-    }
+    },
     {
       "name": "add_tag",
       "type": "text",
