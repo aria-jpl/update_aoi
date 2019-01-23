@@ -43,6 +43,8 @@ def main():
     current_tags = ctx['current_tags']
     prod_type = ctx['prod_type']
     tag = ctx.get('add_tag', None)
+    if tag == '':
+        tag = None
     add_tag(index, uid, prod_type, current_tags, tag)
 
 if __name__ == '__main__':
