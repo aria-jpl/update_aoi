@@ -27,7 +27,8 @@
     {
       "name": "add_tag",
       "type": "text",
-      "from": "submitter"
+      "from": "submitter",
+      "optional": true
     }
   ]
 }

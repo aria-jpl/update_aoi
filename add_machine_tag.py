@@ -20,10 +20,13 @@ def load_context():
 
 def add_tag(index, uid, prod_type, existing_tags, tag):
     '''updates the product with the given tag'''
-    tag_list = tag.split(',')
-    if not type(existing_tags) is list:
-       current_tags = []
-    tag_list = list(set(existing_tags + tag_list))
+    if tag is None:
+        tag_list = [] #tag is empty, remova ll tags
+    else:
+        tag_list = tag.split(',')
+        if not type(existing_tags) is list:
+           current_tags = []
+        tag_list = list(set(existing_tags + tag_list))
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, prod_type, uid)
     es_query = {"doc" : {"metadata": {"tags" : tag_list}}}
@@ -39,7 +42,7 @@ def main():
     uid = ctx['prod_id']
     current_tags = ctx['current_tags']
     prod_type = ctx['prod_type']
-    tag = ctx['add_tag']
+    tag = ctx.get('add_tag', None)
     add_tag(index, uid, prod_type, current_tags, tag)
 
 if __name__ == '__main__':
