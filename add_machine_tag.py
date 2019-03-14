@@ -27,7 +27,7 @@ def add_tag(index, uid, prod_type, existing_tags, tag):
         if not type(existing_tags) is list:
            current_tags = []
         tag_list = list(set(existing_tags + tag_list))
-    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+    grq_ip = app.conf['GRQ_ES_URL'].replace(':9200', '').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, prod_type, uid)
     es_query = {"doc" : {"metadata": {"tags" : tag_list}}}
     print('querying {} with {}'.format(grq_url, es_query))
