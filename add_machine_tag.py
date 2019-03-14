@@ -18,11 +18,18 @@ def load_context():
     except:
         raise Exception('unable to parse _context.json from work directory')
 
-def add_tag(index, uid, prod_type, tag):
+def add_tag(index, uid, prod_type, existing_tags, tag):
     '''updates the product with the given tag'''
+    if tag is None:
+        tag_list = [] #tag is empty, remova ll tags
+    else:
+        tag_list = tag.split(',')
+        if not type(existing_tags) is list:
+           current_tags = []
+        tag_list = list(set(existing_tags + tag_list))
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, prod_type, uid)
-    es_query = {"doc" : {"metadata": {"tags" : [tag]}}}
+    es_query = {"doc" : {"metadata": {"tags" : tag_list}}}
     print('querying {} with {}'.format(grq_url, es_query))
     response = requests.post(grq_url, data=json.dumps(es_query), timeout=60, verify=False)
     response.raise_for_status()
@@ -33,9 +40,12 @@ def main():
     ctx = load_context()
     index = ctx['prod_index']
     uid = ctx['prod_id']
+    current_tags = ctx['current_tags']
     prod_type = ctx['prod_type']
-    tag = ctx['add_tag']
-    add_tag(index, uid, prod_type, tag)
+    tag = ctx.get('add_tag', None)
+    if tag == '':
+        tag = None
+    add_tag(index, uid, prod_type, current_tags, tag)
 
 if __name__ == '__main__':
     main()
