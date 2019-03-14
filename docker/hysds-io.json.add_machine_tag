@@ -20,11 +20,6 @@
       "type": "text"
     },
     {
-<<<<<<< HEAD
-      "name": "add_tag",
-      "type": "text",
-      "from": "submitter"
-=======
      "name": "current_tags",
      "from": "dataset_jpath:_source.metadata",
      "lambda": "lambda x: x.get('tags', [])"
@@ -34,7 +29,6 @@
       "type": "text",
       "from": "submitter",
       "optional": true
->>>>>>> 5f5d2968f6d25ffc1022e6c4d566d868d72bc3ce
     }
   ]
 }

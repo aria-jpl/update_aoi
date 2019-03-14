@@ -22,13 +22,10 @@
       "destination": "context"
     },
     {
-<<<<<<< HEAD
-=======
       "name": "current_tags",
       "destination": "context"
     },
     {
->>>>>>> 5f5d2968f6d25ffc1022e6c4d566d868d72bc3ce
       "name": "add_tag",
       "destination": "context"
     }
