@@ -42,8 +42,11 @@ def main():
 def get_expiring_aois(now_time, expire_time):
     '''return the names of AOIs expiring within the given time'''
     data = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"range":{"endtime":{"gt":"%s","lt":"%s"}}}],"must_not":[],"should":[]}},"from":0,"size":5000,"sort":[{"endtime":{"order":"asc"}}],"aggs":{}}' % (now_time, expire_time)
-    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
-    grq_url = '{0}/es/_search'.format(grq_ip)
+
+    #grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+    #grq_url = '{0}/es/_search'.format(grq_ip)
+    grq_ip = app.conf['GRQ_ES_URL']#.rstrip(':9200').replace('http://', 'https://')
+    grq_url = '{0}/_search'.format(grq_ip)
     response = requests.post(grq_url, data=data, timeout=60, verify=False)
     response.raise_for_status()
     results = json.loads(response.text)['hits']['hits']
@@ -87,7 +90,10 @@ def build_aoi_report(aoi):
     days_until_expire = float((endtime - now).total_seconds()) / 86400.0
     query = '{"query":{"bool":{"must":[{"term":{"dataset_type.raw":"area_of_interest"}},{"query_string":{"query":"\\"%s\\"","default_operator":"OR"}}]}},"sort":[{"_timestamp":{"order":"desc"}}],"fields":["_timestamp","_source"]}' % name
     encoded = base64.b64encode(query)
-    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+
+    #grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+    #url = '{0}/search/?base64={1}'.format(grq_ip, encoded)
+    grq_ip = app.conf['GRQ_ES_URL']#.rstrip(':9200').replace('http://', 'https://')
     url = '{0}/search/?base64={1}'.format(grq_ip, encoded)
     report = '{0}\n------------------------------\nExpires in: {1:.1f} days\nStart time: {2}\nEnd time:   {3}\n{4}\n\n'.format(name, days_until_expire, starttime_str, endtime_str, url)
     return report
