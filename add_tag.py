@@ -20,7 +20,7 @@ def load_context():
 
 def add_tag(index, uid, prod_type, tag):
     '''updates the product with the given tag'''
-    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+    grq_ip = app.conf['GRQ_ES_URL'].replace(':9200', '').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, prod_type, uid)
     es_query = {"doc" : {"metadata": {"user_tags" : [tag]}}}
     print('querying {} with {}'.format(grq_url, es_query))

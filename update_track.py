@@ -4,7 +4,6 @@
 Update/Change track number for a given AOI
 '''
 
-import os
 import json
 import requests
 from hysds.celery import app
@@ -17,8 +16,8 @@ def main():
     aoi_type = context['aoi_type']
     action = context['action']
     if action == 'append':
-        print('appending track {} to AOI: {}'.format(track_number, aoi_name))
         track_number = int(context['track_number'])
+        print('appending track {} to AOI: {}'.format(track_number, aoi_name))
         append_track_num(track_number, aoi_name, index, aoi_type)
     elif action == 'clear':
         print('clearing track info for AOI: {}'.format(aoi_name))
@@ -36,7 +35,7 @@ def append_track_num(track_number, aoi_name, index, aoi_type):
     print('updated track list: {}'.format(track_list))
     grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, aoi_type, aoi_name)
-    es_query = {"doc" : {"metadata": {"track" : track_list}}}
+    es_query = {"doc" : {"metadata": {"track_number" : track_list}}}
     print('querying {} with {}'.format(grq_url, es_query))
     response = requests.post(grq_url, data=json.dumps(es_query), timeout=60, verify=False)
     response.raise_for_status()
@@ -44,22 +43,22 @@ def append_track_num(track_number, aoi_name, index, aoi_type):
 
 def get_current_tracks(aoi_name, index, aoi_type):
     '''returns the current tracks as a list, returns an empty list if none exist'''
-    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
-    grq_url = '{0}/es/{1}/{2}/{3}?fields=metadata.track'.format(grq_ip, index, aoi_type, aoi_name)
+    grq_ip = app.conf['GRQ_ES_URL'].replace(':9200', '').replace('http://', 'https://')
+    grq_url = '{0}/es/{1}/{2}/{3}?fields=metadata.track_number'.format(grq_ip, index, aoi_type, aoi_name)
     print('grq url: {}'.format(grq_url))
     response = requests.get(grq_url, timeout=60, verify=False)
     response.raise_for_status()
     resp_dict = json.loads(response.text)
-    if 'fields' in resp_dict.keys() and 'metadata.track' in resp_dict['fields'].keys():
-        return resp_dict['fields']['metadata.track']
+    if 'fields' in resp_dict.keys() and 'metadata.track_number' in resp_dict['fields'].keys():
+        return resp_dict['fields']['metadata.track_number']
     return []
 
 def clear_track_num(aoi_name, index, aoi_type):
     '''clears all track numbers from the aoi'''
     track_list = []
-    grq_ip = app.conf['GRQ_ES_URL'].rstrip(':9200').replace('http://', 'https://')
+    grq_ip = app.conf['GRQ_ES_URL'].replace(':9200', '').replace('http://', 'https://')
     grq_url = '{0}/es/{1}/{2}/{3}/_update'.format(grq_ip, index, aoi_type, aoi_name)
-    es_query = {"doc" : {"metadata": {"track" : track_list}}}
+    es_query = {"doc" : {"metadata": {"track_number" : track_list}}}
     print('querying {} with {}'.format(grq_url, es_query))
     response = requests.post(grq_url, data=json.dumps(es_query), timeout=60, verify=False)
     response.raise_for_status()

@@ -4,7 +4,6 @@
 Update start/event/endtime field for a given AOI
 '''
 
-import os
 import json
 import requests
 import dateutil.parser
@@ -18,7 +17,7 @@ def main():
     aoi_type = context['aoi_type']
     time_field = context['time_field']
     time_obj = dateutil.parser.parse(context['time'])
-    time_string = time_obj.strftime('%Y-%m-%dT%H:%M:%S')
+    time_string = time_obj.strftime('%Y-%m-%dT%H:%M:%SZ')
     print('updating {} {} to: {}'.format(aoi_name, time_field, time_string))
     update_time(index, aoi_type, aoi_name, time_field, time_string)
 
