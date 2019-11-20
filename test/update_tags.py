@@ -1,8 +1,12 @@
+"""
+Tests the add machine tag functionality.
+"""
 def add_machine_tag():
     print("Adding machine tag...");
-    exit 0;
+    return 0;
 
 def main():
+    print("TESTS NOT YET IMPLEMENTED");
     add_machine_tag();
     #add_user_tag();
     #remove_machine_tag();
