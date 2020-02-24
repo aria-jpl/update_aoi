@@ -49,7 +49,7 @@ def get_current_tracks(aoi_name, index, aoi_type):
     response = requests.get(grq_url, timeout=60, verify=False)
     response.raise_for_status()
     resp_dict = json.loads(response.text)
-    if 'fields' in resp_dict.keys() and 'metadata.track_number' in resp_dict['fields'].keys():
+    if 'fields' in list(resp_dict.keys()) and 'metadata.track_number' in list(resp_dict['fields'].keys()):
         return resp_dict['fields']['metadata.track_number']
     return []
 

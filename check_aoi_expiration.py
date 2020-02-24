@@ -5,6 +5,7 @@ Checks for AOI expiration within a given time, and sends an email with the resul
 '''
 
 from __future__ import print_function
+from builtins import str
 import json
 import datetime
 import pytz
